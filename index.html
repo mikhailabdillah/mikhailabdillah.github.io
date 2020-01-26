@@ -23,7 +23,9 @@ $(document).ready(function() {
         crossDomain: true,
         contentType: 'application/json',
         processData: false,
-        data: '{ "access_token" : "14a3467317e2442a540fc679185524abfcd94f74807b19129bb57a6c8041b6ba" }',
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('access_token', '14a3467317e2442a540fc679185524abfcd94f74807b19129bb57a6c8041b6ba') //Some characters have been replaced for security but this is a true BASE64 of "username:password"
+        },
         success: function (data) {
             alert(JSON.stringify(data));
         },
