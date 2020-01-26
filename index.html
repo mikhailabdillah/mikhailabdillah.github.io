@@ -14,16 +14,20 @@
 
 <script>
 $(document).ready(function() {
-    $ch = curl_init();
 
     $.ajax({
         type: 'get',
         url: 'https://api.gumroad.com/v2/products',
-        beforeSend: function(xhr) {
-             xhr.setRequestHeader("Authorization", "Bearer 6QXNMEMFHNY4FJ5ELNFMP5KRW52WFXN5")
-        }, success: function(data){
-            alert(data);
-            //process the JSON data etc
+
+        dataType: 'json',
+        contentType: 'application/json',
+        processData: false,
+        data: '{ "access_token" : "14a3467317e2442a540fc679185524abfcd94f74807b19129bb57a6c8041b6ba" }',
+        success: function (data) {
+            alert(JSON.stringify(data));
+        },
+        error: function(){
+            alert("Cannot get data");
         }
     })
 });
