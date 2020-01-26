@@ -9,5 +9,24 @@
 <body>
     <h1>Hello Mikhail!</h1>
     <p>you are awesoem</p>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $ch = curl_init();
+
+    $.ajax({
+        type: 'get',
+        url: 'https://api.gumroad.com/v2/products',
+        beforeSend: function(xhr) {
+             xhr.setRequestHeader("Authorization", "Bearer 6QXNMEMFHNY4FJ5ELNFMP5KRW52WFXN5")
+        }, success: function(data){
+            alert(data);
+            //process the JSON data etc
+        }
+    })
+});
+</script>
 </body>
 </html>
